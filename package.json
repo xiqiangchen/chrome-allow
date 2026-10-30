@@ -1,0 +1,48 @@
+{
+  "name": "chrome-allow",
+  "version": "0.1.2",
+  "description": "Zero-touch approval for Chrome's remote-debugging consent dialog on macOS",
+  "keywords": [
+    "chrome",
+    "devtools",
+    "cdp",
+    "remote-debugging",
+    "automation",
+    "macos",
+    "applescript",
+    "accessibility",
+    "chrome-devtools-mcp",
+    "claude-code"
+  ],
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": {
+    "chrome-allow": "bin/chrome-allow.js"
+  },
+  "files": [
+    "bin/",
+    "watchers/",
+    "scripts/",
+    "skills/",
+    "README.md",
+    "README-CN.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "os": [
+    "darwin"
+  ],
+  "scripts": {
+    "check": "node --check bin/chrome-allow.js",
+    "build:watcher": "bash scripts/build-watcher.sh",
+    "prepublishOnly": "npm run check && npm run build:watcher && osacompile -o /tmp/chrome-allow-watcher.scpt watchers/allow-watcher.applescript"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}

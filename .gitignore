@@ -1,0 +1,62 @@
+# macOS
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+.npmrc
+coverage/
+.nyc_output/
+
+# Environment and secrets
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Package and build artifacts
+*.tgz
+*.tar.gz
+dist/
+build/
+.build/
+*.dSYM/
+*.o
+*.swiftmodule
+
+# Logs and temporary files
+*.log
+logs/
+tmp/
+.temp/
+*.tmp
+*.swp
+*.swo
+*~
+
+# Editors
+.idea/
+.vscode/
+*.iml
+
+# Claude Code local config and installed skills
+.claude/
+
+# Runtime state (normally lives in ~/.chrome-allow)
+.chrome-allow/
+
+# Local analysis notes (not part of the open-source repo)
+docs/ai/
+
+# Generated Swift binary (built by scripts/build-watcher.sh)
+watchers/chrome-allow-watcher

@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: JavaScript syntax
+        run: node --check bin/chrome-allow.js
+
+      - name: AppleScript syntax
+        run: osacompile -o /tmp/allow-watcher.scpt watchers/allow-watcher.applescript
+
+      - name: Swift typecheck
+        run: xcrun swiftc -typecheck watchers/watcher.swift
+
+      - name: Build universal watcher
+        run: npm run build:watcher
+
+      - name: Universal binary
+        run: |
+          test -x watchers/chrome-allow-watcher
+          file watchers/chrome-allow-watcher | grep -q universal
+
+      - name: Package contents
+        run: npm pack --dry-run
